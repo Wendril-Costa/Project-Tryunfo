@@ -17,6 +17,7 @@ class Form extends Component {
             type="text"
             value={ cardName }
             onChange={ onInputChange }
+            name="cardName"
           />
         </label>
         <label htmlFor="descricao">
@@ -27,6 +28,7 @@ class Form extends Component {
             type="text"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="cardDescription"
           />
         </label>
         <label htmlFor="atrib-1">
@@ -37,6 +39,7 @@ class Form extends Component {
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="cardAttr1"
           />
         </label>
         <label htmlFor="atrib-2">
@@ -47,6 +50,7 @@ class Form extends Component {
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="cardAttr2"
           />
         </label>
         <label htmlFor="atrib-3">
@@ -57,6 +61,7 @@ class Form extends Component {
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="cardAttr3"
           />
         </label>
         <label htmlFor="url-img">
@@ -67,16 +72,17 @@ class Form extends Component {
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardImage"
           />
         </label>
         <label htmlFor="raridade">
           Raridade:
           <select
             data-testid="rare-input"
-            name="raridade"
             id="raridade"
             value={ cardRare }
             onChange={ onInputChange }
+            name="cardRare"
           >
             <option value="normal"> normal </option>
             <option value="raro"> raro </option>
@@ -91,6 +97,7 @@ class Form extends Component {
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="cardTrunfo"
           />
         </label>
         <button
