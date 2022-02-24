@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Form from './components/Form';
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <div>
-        <h1>Tryunf</h1>
+        <h1>Tryunfo</h1>
+        <div>
+          <Form />
+        </div>
       </div>
     );
   }
