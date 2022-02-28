@@ -8,9 +8,9 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -19,6 +19,7 @@ class App extends Component {
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.validateSaveButton = this.validateSaveButton.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -27,6 +28,19 @@ class App extends Component {
     this.setState({
       [name]: value,
     }, () => this.validateSaveButton());
+  }
+
+  onSaveButtonClick(element) {
+    element.preventDefault();
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    });
   }
 
   validateSaveButton() {
@@ -56,7 +70,7 @@ class App extends Component {
   }
 
   render() {
-    const { state, onInputChange } = this;
+    const { state, onInputChange, onSaveButtonClick } = this;
     return (
       <>
         <div>
@@ -66,6 +80,16 @@ class App extends Component {
           <Form
             onInputChange={ onInputChange }
             isSaveButtonDisabled={ state.isSaveButtonDisabled }
+            onSaveButtonClick={ onSaveButtonClick }
+            cardName={ state.cardName }
+            cardDescription={ state.cardDescription }
+            cardAttr1={ state.cardAttr1 }
+            cardAttr2={ state.cardAttr2 }
+            cardAttr3={ state.cardAttr3 }
+            cardImage={ state.cardImage }
+            cardRare={ state.cardRare }
+            cardTrunfo={ state.cardTrunfo }
+            hasTrunfo={ state.hasTrunfo }
           />
           <Card
             cardName={ state.cardName }
