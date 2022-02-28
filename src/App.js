@@ -32,6 +32,11 @@ class App extends Component {
 
   onSaveButtonClick(element) {
     element.preventDefault();
+    const { state } = this;
+
+    if (state.cardTrunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -64,6 +69,8 @@ class App extends Component {
     + parseInt(state.cardAttr3, 10) <= sum
     ) {
       this.setState({ isSaveButtonDisabled: false });
+    } else if (state.hasTrunfo === true && state.cardTrunfo === true) {
+      this.setState({ isSaveButtonDisabled: true });
     } else {
       this.setState({ isSaveButtonDisabled: true });
     }

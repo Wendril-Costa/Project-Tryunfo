@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
       onInputChange, onSaveButtonClick } = this.props;
 
     return (
@@ -31,33 +31,33 @@ class Form extends Component {
             name="cardDescription"
           />
         </label>
-        <label htmlFor="atrib-1">
+        <label htmlFor="attr1">
           Attr1:
           <input
             data-testid="attr1-input"
-            id="atrib-1"
+            id="attr1"
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
             name="cardAttr1"
           />
         </label>
-        <label htmlFor="atrib-2">
+        <label htmlFor="attr2">
           Attr2:
           <input
             data-testid="attr2-input"
-            id="atrib-2"
+            id="attr2"
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
             name="cardAttr2"
           />
         </label>
-        <label htmlFor="atrib-3">
+        <label htmlFor="attr3">
           Attr3:
           <input
             data-testid="attr3-input"
-            id="atrib-3"
+            id="attr3"
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -89,17 +89,20 @@ class Form extends Component {
             <option value="muito raro"> muito raro</option>
           </select>
         </label>
-        <label htmlFor="sup-try">
-          Super Trunfo:
-          <input
-            data-testid="trunfo-input"
-            id="sup-try"
-            type="checkbox"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            name="cardTrunfo"
-          />
-        </label>
+        {hasTrunfo ? <p> Você já tem um Super Trunfo em seu baralho </p>
+          : (
+            <label htmlFor="trunfo">
+              Super Trunfo:
+              <input
+                onChange={ onInputChange }
+                data-testid="trunfo-input"
+                id="trunfo"
+                type="checkbox"
+                checked={ cardTrunfo }
+                name="cardTrunfo"
+              />
+            </label>
+          )}
         <button
           data-testid="save-button"
           type="submit"
