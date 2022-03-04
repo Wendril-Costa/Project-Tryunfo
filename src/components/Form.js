@@ -122,9 +122,9 @@ Form.propTypes = {
   cardAttr1: PropTypes.string,
   cardAttr2: PropTypes.string,
   cardAttr3: PropTypes.string,
-  cardImagestring: PropTypes.string,
+  cardImage: PropTypes.string,
   cardRare: PropTypes.string,
-  cardTrunfoum: PropTypes.bool,
+  cardTrunfo: PropTypes.bool,
 }.isRequired;
 
 export default Form;

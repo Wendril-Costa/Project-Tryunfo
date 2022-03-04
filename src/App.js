@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Deck from './components/Deck';
 
 class App extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class App extends Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardList: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.validateSaveButton = this.validateSaveButton.bind(this);
@@ -34,6 +36,18 @@ class App extends Component {
     element.preventDefault();
     const { state } = this;
 
+    const objcs = {
+      cardRare: state.cardRare,
+      cardName: state.cardName,
+      cardImage: state.cardImage,
+      cardDescription: state.cardDescription,
+      cardAttr1: state.cardAttr1,
+      cardAttr2: state.cardAttr2,
+      cardAttr3: state.cardAttr3,
+      cardTrunfo: state.cardTrunfo,
+    };
+    this.setState((prevState) => ({ cardList: [...prevState.cardList, objcs] }));
+
     if (state.cardTrunfo === true) {
       this.setState({ hasTrunfo: true });
     }
@@ -45,6 +59,7 @@ class App extends Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
     });
   }
 
@@ -108,6 +123,10 @@ class App extends Component {
             cardRare={ state.cardRare }
             cardTrunfo={ state.cardTrunfo }
             hasTrunfo={ state.hasTrunfo }
+          />
+          {/* https://github.com/tryber/sd-019-c-project-tryunfo/pull/3/commits/86cfdb9931836ce29243f6d09078a411db402ef7 */}
+          <Deck
+            cardList={ state.cardList }
           />
         </div>
       </>
